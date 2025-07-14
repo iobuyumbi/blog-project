@@ -1,4 +1,5 @@
 const express = require("express");
+const { protect, restrictTo } = require("../middleware/authMiddleware");
 const router = express.Router();
 const {
   getAllCategories,
@@ -13,8 +14,9 @@ router.get("/", getAllCategories);
 router.get("/:idOrSlug", getCategory);
 
 // Private routes (Admin only ideally)
-router.post("/", createCategory);
-router.put("/:idOrSlug", updateCategory);
-router.delete("/:idOrSlug", deleteCategory);
+// Admin-only routes
+router.post("/", protect, restrictTo("admin"), createCategory);
+router.put("/:idOrSlug", protect, restrictTo("admin"), updateCategory);
+router.delete("/:idOrSlug", protect, restrictTo("admin"), deleteCategory);
 
 module.exports = router;
