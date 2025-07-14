@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
   res.send("MERN Blog API is running");
 });
 
-// 404 Handler
+// User nof found 404 Handler
 app.use(notFound);
 
 // Global Centralized Error handler (from ./middleware/errorHandler)
