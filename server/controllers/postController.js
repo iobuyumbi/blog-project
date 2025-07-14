@@ -78,7 +78,6 @@ exports.createPost = async (req, res, next) => {
 // @desc Update a post
 // @route PUT /api/posts/:id
 // @access Private
-const Post = require("../models/Post");
 
 exports.updatePost = async (req, res, next) => {
   try {
@@ -133,7 +132,6 @@ exports.updatePost = async (req, res, next) => {
 // @desc Delete a post
 // @route DELETE /api/posts/:id
 // @access Private (author or admin)
-const Post = require("../models/Post");
 
 exports.deletePost = async (req, res, next) => {
   try {

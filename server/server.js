@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
-const errorHandler = require("./middleware/errorHandler");
+const notFound = require("./middleware/notFound");
+const errorHandler = require("./middleware/errorMiddleware");
 
 // Import routes
 const postRoutes = require("./routes/posts");
