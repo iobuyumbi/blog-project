@@ -19,8 +19,20 @@ exports.register = async (req, res, next) => {
 
     // Create new user
     const newUser = await User.create({ name, email, password });
-    const token = exports.generateToken(newUser);
-    res.status(201).json({ token });
+    const token = generateToken(newUser); // Use imported function
+
+    // Respond with user data and token
+    res.status(201).json({
+      success: true,
+      message: "User registered successfully",
+      user: {
+        _id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+        role: newUser.role,
+      },
+      token,
+    });
   } catch (error) {
     next(error);
   }
@@ -43,7 +55,7 @@ exports.login = async (req, res, next) => {
     }
 
     // Check if password is correct
-    const isMatch = await user.matchPassword(password);
+    const isMatch = await user.comparePassword(password); // Use comparePassword
     if (!isMatch) {
       return res.status(401).json({
         success: false,
@@ -58,13 +70,13 @@ exports.login = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "Logged in successfully",
-      data: {
+      user: {
         _id: user._id,
         name: user.name,
         email: user.email,
         role: user.role,
-        token,
       },
+      token,
     });
   } catch (error) {
     next(error);
