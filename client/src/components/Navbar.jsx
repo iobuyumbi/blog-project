@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Separator } from "./ui/separator";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { user, logout, isAuthenticated } = useAuth();
@@ -71,8 +72,9 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Auth Section */}
+          {/* Auth Section & Theme Toggle */}
           <div className="flex items-center space-x-4">
+            <ThemeToggle />
             {isAuthenticated ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
