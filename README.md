@@ -6,7 +6,7 @@ This assignment focuses on building a full-stack MERN (MongoDB, Express.js, Reac
 
 ## Deployed Applications
 
-- **Frontend:** https://blog-project-beta-two.vercel.app
+- **Frontend:** https://blog-project-xi-rust.vercel.app
 - **Backend API:** https://blog-project-v450.onrender.com
 
 ## Assignment Overview
